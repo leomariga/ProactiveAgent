@@ -10,7 +10,6 @@
 [![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://python.org)
 [![PyPI](https://img.shields.io/pypi/v/proactiveagent)](https://pypi.org/project/proactiveagent/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/github/workflow/status/leomariga/ProactiveAgent/tests)](https://github.com/leomariga/ProactiveAgent/actions)
 
 *Transform your AI from reactive to proactive with intelligent timing and context-aware wake-up patterns*
 
@@ -49,20 +48,21 @@ from proactiveagent import ProactiveAgent, OpenAIProvider
 agent = ProactiveAgent(
     provider=OpenAIProvider(model="gpt-5-nano",),
     system_prompt="You are a casual bored teenager. Answer like you're texting a friend",
+
     # Define in natural language the frequency of response
     decision_config={
         'wake_up_pattern': "Use the pace of a normal text chat",
     }
 )
 
-# 3. Add response callback
+# Add response callback
 def on_response(response: str):
     print(f"🤖 AI: {response}")
 
 agent.add_callback(on_response)
 
 
-# 4. Start the agent thread and chat
+# Start the agent thread and chat
 agent.start()
 agent.send_message("Hey! whatsup?")
 # You can add a loop to keep sending the agent more messages! see our examples.
@@ -227,10 +227,6 @@ Explore our examples in the [`examples/`](examples/) directory:
 ### Monitoring & Callbacks
 - **[`comprehensive_callbacks.py`](examples/callbacks/comprehensive_callbacks.py)** - Full callback system
 
-**Run any example:**
-```bash
-python examples/ultra_simple_chat.py
-```
 ## Advanced Features
 
 ### Context Management
@@ -258,7 +254,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
