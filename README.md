@@ -2,8 +2,8 @@
 
 <div align="center">
 
-<!-- Logo placeholder -->
-<img src="docs/logo.png" alt="ProactiveAgent Logo" width="200"/>
+<!-- Logo placeholder
+<img src="docs/logo.png" alt="ProactiveAgent Logo" width="200"/> -->
 
 **Time-awareness for your AI Agent**
 
@@ -27,9 +27,9 @@
 - **Stay flexible** - Fully customizable decision engines and sleep calculators
 
 <!-- Demo GIF placeholder -->
-<div align="center">
+<!-- <div align="center">
 <img src="docs/demo.gif" alt="ProactiveAgent Demo" width="600"/>
-</div>
+</div> -->
 
 ## Quick Start
 
@@ -73,9 +73,9 @@ agent.send_message("Hey! whatsup?")
 ProactiveAgent operates on a **3-step decision cycle**:
 
 <!-- Architecture diagram placeholder -->
-<div align="center">
+<!-- <div align="center">
 <img src="docs/architecture.png" alt="ProactiveAgent Architecture" width="800"/>
-</div>
+</div> -->
 
 ### 1. Decision Engine - "Should I Respond?"
 
@@ -110,9 +110,9 @@ Finally, the **Sleep Calculator** determines optimal wait time before the next d
 You can also create your own SleepCalculator TODO LINK
 
 <!-- Flow diagram placeholder -->
-<div align="center">
+<!-- <div align="center">
 <img src="docs/decision-flow.png" alt="Decision Flow" width="600"/>
-</div>
+</div> -->
 
 ## Customization & Flexibility
 
