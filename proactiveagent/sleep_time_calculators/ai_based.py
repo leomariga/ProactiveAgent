@@ -23,9 +23,6 @@ class AIBasedSleepCalculator(SleepTimeCalculator):
         context: Dict[str, Any]
     ) -> tuple[int, str]:
         """Calculate sleep time using AI provider"""
-        print(f"[wake_up_pattern]: {config.get('wake_up_pattern', '')}")
-        print(f"[min_sleep_time]: {config.get('min_sleep_time', 0)}")
-        print(f"[max_sleep_time]: {config.get('max_sleep_time', 0)}")
         wake_up_pattern = config.get('wake_up_pattern', "Check every 2-3 minutes if conversation is active")
         min_sleep_time = config.get('min_sleep_time', 30)  # Default 30 seconds
         max_sleep_time = config.get('max_sleep_time', 600)  # Default 10 minutes in seconds
