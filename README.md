@@ -81,7 +81,6 @@ The Decision Engine evaluates multiple factors to determine if the AI should res
 - **AI Reasoning**: Uses native AI capabilities for intelligent decision-making
 - **Engagement**: Monitors user activity patterns and conversation intensity
 
-> **💡 Customize Your Decision Engine**  
 > We have other engines you can choose from and you can also define your own engine using our abstract base class. See the [Decision Engines](#decision-engines) section for details and examples. 
 
 ### 2. Message Generation - "Respond"
@@ -97,7 +96,6 @@ Determines the best wait time before the next decision cycle. Available options:
 - **Function-Based**: Custom timing functions
 - **Static**: Fixed intervals
 
-> **💡 Customize Your Sleep Calculator**  
 > You can also create your own SleepCalculator. See the [Sleep Calculators](#sleep-calculators) section for details and examples.
 
 <!-- Flow diagram placeholder -->
@@ -196,7 +194,7 @@ agent = ProactiveAgent(
     }
 )
 ```
-You can also add your own config parameters for you customized engines and calculator. See example TODO link
+<!-- You can also add your own config parameters for you customized engines and calculator. See example TODO link -->
 ## Examples
 
 Explore our examples in the [`examples/`](examples/) directory:
