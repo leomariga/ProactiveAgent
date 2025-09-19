@@ -1,207 +1,273 @@
-# Proactive AI Agents
+# ProactiveAgent
 
-A Python library for creating proactive AI agents that actively engage users instead of waiting for input. The agents use configurable wake-up patterns and intelligent decision-making to determine when and how to respond.
+<div align="center">
 
-## Features
+<!-- Logo placeholder -->
+<img src="docs/logo.png" alt="ProactiveAgent Logo" width="200"/>
 
-- **Proactive Communication**: AI agents actively initiate conversations
-- **Configurable Wake-up Patterns**: Define custom timing patterns for agent activity
-- **Time-Aware Responses**: Agents receive elapsed time information for contextual decisions
-- **Multi-Provider Support**: Extensible architecture (currently supports OpenAI)
-- **Thread-Based Operation**: Non-blocking execution in separate threads
-- **Callback System**: Flexible response handling through user-defined callbacks
+**Time-awareness for your AI Agent**
 
-## Installation
+[![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://python.org)
+[![PyPI](https://img.shields.io/pypi/v/proactiveagent)](https://pypi.org/project/proactiveagent/)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)](LICENSE)
+[![Tests](https://img.shields.io/github/workflow/status/leomariga/ProactiveAgent/tests)](https://github.com/leomariga/ProactiveAgent/actions)
 
-```bash
-pip install proactive-agent
-```
+*Transform your AI from reactive to proactive with intelligent timing and context-aware wake-up patterns*
 
-## Super Simple Example
+[Quick Start](#quick-start) • [Documentation](#documentation) • [Examples](#examples) • [Architecture](#architecture)
 
-**Just 10 lines to get started:**
+</div>
 
-```python
-from proactiveagent import ProactiveAgent, OpenAIProvider
-import time
+## What is ProactiveAgent?
 
-# Create provider and agent
-provider = OpenAIProvider(api_key="your-openai-api-key-here")
-agent = ProactiveAgent(provider, max_sleep_time="30 seconds")
+**ProactiveAgent** is an open-source Python library that wraps AI models with intelligent **proactive behavior**. Unlike traditional agents that only respond when prompted, ProactiveAgent creates AI agents that:
 
-# Add response handler and start
-agent.add_callback(lambda response: print(f"AI: {response}"))
-agent.start()
+- **Think before speaking** - Multi-factor decision engine determines *if* and *when* to respond
+- **Sleep intelligently** - Dynamic timing system calculates smart response intervals  
+- **Understand context** - Analyzes conversation flow, user engagement, and urgency
+- **Stay flexible** - Fully customizable decision engines and sleep calculators
 
-# Send message and wait for proactive response
-agent.send_message("Hello! Tell me about AI agents.")
-time.sleep(5)  # Wait for AI response
-
-agent.stop()
-```
-
-**Interactive chat:**
-
-```python
-from proactiveagent import ProactiveAgent, OpenAIProvider
-import time
-
-def on_ai_response(response: str):
-    print(f"🤖 AI: {response}")
-
-# Setup
-provider = OpenAIProvider(api_key="your-openai-api-key-here")
-agent = ProactiveAgent(provider, max_sleep_time="1 minute")
-agent.add_callback(on_ai_response)
-agent.start()
-
-# Chat loop
-while True:
-    message = input("You: ").strip()
-    if message.lower() == 'quit': break
-    agent.send_message(message)
-    time.sleep(3)  # Wait for response
-
-agent.stop()
-```
+<!-- Demo GIF placeholder -->
+<div align="center">
+<img src="docs/demo.gif" alt="ProactiveAgent Demo" width="600"/>
+</div>
 
 ## Quick Start
 
+### Installation
+
+```bash
+pip install proactiveagent
+```
+
+### Basic Usage
+
 ```python
-import os
 from proactiveagent import ProactiveAgent, OpenAIProvider
 
-# Initialize provider with your API key
-provider = OpenAIProvider(
-    model="gpt-3.5-turbo",
-    api_key="your_openai_api_key_here",  # Replace with your actual API key
-    temperature=0.7,
-    max_tokens=150
-)
-
-# Create agent with custom configuration
+# Create a proactive agent
 agent = ProactiveAgent(
-    provider=provider,
-    wake_up_pattern="Check every 2-5 minutes if user seems busy, every 30 seconds if engaged",
-    max_sleep_time="10 minutes",
-    callbacks=[lambda response: print(f"AI: {response}")],
-    log_level="INFO"
+    provider=OpenAIProvider(model="gpt-5-nano",),
+    system_prompt="You are a casual bored teenager. Answer like you're texting a friend",
+    # Define in natural language the frequency of response
+    decision_config={
+        'wake_up_pattern': "Use the pace of a normal text chat",
+    }
 )
 
-# Start the agent
+# 3. Add response callback
+def on_response(response: str):
+    print(f"🤖 AI: {response}")
+
+agent.add_callback(on_response)
+
+
+# 4. Start the agent thread and chat
 agent.start()
-
-# Send a message to begin conversation
-agent.send_message("Hello! How are you today?")
-
-# The agent will now actively participate in the conversation
-# Stop when done
-agent.stop()
+agent.send_message("Hey! whatsup?")
+# You can add a loop to keep sending the agent more messages! see our examples.
 ```
 
-## Configuration
+## How It Works
 
-You can set your OpenAI API key in several ways:
+ProactiveAgent operates on a **3-step decision cycle**:
 
-**Option 1: Direct in code (simple)**
-```python
-provider = OpenAIProvider(
-    model="gpt-3.5-turbo",
-    api_key="your_actual_api_key_here"
-)
-```
+<!-- Architecture diagram placeholder -->
+<div align="center">
+<img src="docs/architecture.png" alt="ProactiveAgent Architecture" width="800"/>
+</div>
 
-**Option 2: Environment variable**
-```python
-import os
-provider = OpenAIProvider(
-    model="gpt-3.5-turbo",
-    api_key=os.getenv('OPENAI_API_KEY')
-)
-```
+### 1. Decision Engine - "Should I Respond?"
 
-**Option 3: System environment variable**
-```bash
-# On Windows
-set OPENAI_API_KEY=your_openai_api_key_here
+The **Decision Engine** analyzes multiple factors to determine if the AI should respond. Our default engine:
 
-# On macOS/Linux
-export OPENAI_API_KEY=your_openai_api_key_here
-```
+- **Context Analysis**: Evaluates questions, urgency keywords, and conversation flow
+- **Time Factors**: Considers elapsed time since the last user message
+- **AI Reasoning**: Leverages native AI decision-making capabilities
+- **Engagement Level**: Monitors user activity patterns and conversation intensity
 
-## API Reference
+We have other engines that you can choose TODO LINK. You can also define your own Engine like using our abstract class TODO LINK. (essa frase pode ficar com um design diferente no readme)
+**TODO: See Multi-Factor Scoring for more info**:
 
-### ProactiveAgent
 
-Main class for creating proactive AI agents.
+### 2. Message Generation - "Respond"
 
-#### Parameters
+When the decision engine determines a response is appropriate, the agent:
+- Generates contextually appropriate responses
+- Considers conversation history and timing
+- Maintains natural conversation flow
+- Triggers all registered response callbacks
 
-- `provider`: AI provider instance (e.g., OpenAIProvider)
-- `wake_up_pattern`: Description of when agent should wake up
-- `max_sleep_time`: Maximum time to sleep between wake-ups (int seconds or string like "10 minutes")
-- `callbacks`: List of callback functions for receiving responses
-- `decision_config`: Optional configuration dict for decision engine behavior
-- `system_prompt`: Optional system prompt for the AI
-- `log_level`: Logging level (DEBUG, INFO, WARNING, ERROR)
+### 3. Sleep Calculator - "How Long Should I Wait?"
 
-#### Methods
+Finally, the **Sleep Calculator** determines optimal wait time before the next decision cycle. There are different Sleep Calculator available, for example:
 
-- `start()`: Start the agent in a separate thread
-- `stop()`: Stop the agent
-- `send_message(message, role="user")`: Send a message to the conversation
-- `add_callback(callback)`: Add a response callback function
-- `update_wake_up_pattern(pattern)`: Update the wake-up pattern
-- `get_conversation_history()`: Get full conversation history
+- **AI-Based** (default): Uses AI to interpret natural language patterns like *"Respond in a frequency of a normal internet chat"* or *"You are a anxious person"*
+- **Pattern-Based**: Keyword matching for different conversation states
+- **Function-Based**: Define your own function for adaptive timing
+- **Static**: Fixed intervals for predictable behavior
 
-### OpenAIProvider
+You can also create your own SleepCalculator TODO LINK
 
-OpenAI implementation of the AI provider interface.
+<!-- Flow diagram placeholder -->
+<div align="center">
+<img src="docs/decision-flow.png" alt="Decision Flow" width="600"/>
+</div>
 
-#### Parameters
+## Customization & Flexibility
 
-- `model`: OpenAI model name (default: "gpt-3.5-turbo")
-- `api_key`: OpenAI API key (optional, can be set via environment)
-- `temperature`: Response randomness (default: 0.7)
-- `max_tokens`: Maximum response length (default: 150)
+### Decision Engines
 
-## Wake-up Patterns
-
-You can define custom wake-up patterns using natural language:
+Choose or create your own decision-making logic:
 
 ```python
-# Examples
-agent.update_wake_up_pattern("Check every 30 seconds if user is active")
-agent.update_wake_up_pattern("Respond quickly during business hours, slower in evening")
-agent.update_wake_up_pattern("Be more active if conversation involves urgent topics")
+from proactiveagent import AIBasedDecisionEngine, SimpleDecisionEngine
+
+# Option 1 - AI-powered decisions (default)
+ai_engine = AIBasedDecisionEngine(provider)
+
+# Option 2 - Simple time-based decisions
+simple_engine = SimpleDecisionEngine()
+
+# Option 3 - Your custom logic
+class MyDecisionEngine(DecisionEngine):
+    async def should_respond(self, messages, last_time, context, config, triggered_by_user):
+        # Your custom decision logic here
+        return should_respond, "reasoning"
+
+agent = ProactiveAgent(provider=provider, decision_engine=MyDecisionEngine())
 ```
 
-## Callbacks
+### Sleep Time Calculators
 
-Define custom callback functions to handle AI responses:
+Control when your agent "wakes up" to make decisions:
 
 ```python
-def log_response(response):
-    print(f"[{time.time()}] AI: {response}")
+from proactiveagent import AIBasedSleepCalculator, StaticSleepCalculator
 
-def save_to_file(response):
-    with open("conversation.txt", "a") as f:
-        f.write(f"AI: {response}\n")
+# Option 1 - AI interprets natural language patterns (default)
+ai_calc = AIBasedSleepCalculator(provider)
 
+# Option 2 - Fixed intervals
+static_calc = StaticSleepCalculator(sleep_time=120)  # Every 2 minutes
+
+# Option 3 - Your own custom adaptive logic
+class SmartCalculator(SleepTimeCalculator):
+    async def calculate_sleep_time(self, config, context):
+        engagement = context.get('user_engagement', 'medium')
+        if engagement == 'high':
+            return 30, "High engagement - checking frequently"
+        elif engagement == 'low':
+            return 300, "Low engagement - checking less often"
+        return 120, "Medium engagement - standard interval"
+
+agent.scheduler.set_sleep_time_calculator(SmartCalculator())
+```
+
+### Real-Time Monitoring
+
+Track your agent's behavior with callbacks:
+
+```python
+def on_response(response: str):
+    print(f"Response: {response}")
+
+def on_decision(should_respond: bool, reasoning: str):
+    status = "RESPOND" if should_respond else "WAIT"
+    print(f"Decision: {status} - {reasoning}")
+
+def on_sleep_time(sleep_time: int, reasoning: str):
+    print(f"Sleeping {sleep_time}s - {reasoning}")
+
+# Register callbacks
+agent.add_callback(on_response)
+agent.add_decision_callback(on_decision)
+agent.add_sleep_time_callback(on_sleep_time)
+```
+
+## Configuration Options
+
+Fine-tune your agent's behavior with comprehensive configuration:
+
+```python
 agent = ProactiveAgent(
     provider=provider,
-    callbacks=[log_response, save_to_file]
+    decision_config={
+        # Response timing bounds
+        'min_response_interval': 30,      # Minimum seconds between responses
+        'max_response_interval': 600,     # Maximum seconds before forced response
+        'probability_weight': 0.3,        # AI decision weight
+        
+        # Sleep calculation
+        'wake_up_pattern': "Check around 2-3 minutes when user is active",
+        'min_sleep_time': 30,             # Minimum sleep seconds
+        'max_sleep_time': 600,            # Maximum sleep seconds
+    }
 )
 ```
+You can also add your own config parameters for you customized engines and calculator. See example TODO link
+## Examples
 
-## Development
+Explore our examples in the [`examples/`](examples/) directory:
 
-To run examples: `pip install -e .` then `python examples/ultra_simple_chat.py`
+### Getting Started
+- **[`ultra_simple_chat.py`](examples/ultra_simple_chat.py)** - Minimal WhatsApp-style chat
+- **[`all_config_parameters.py`](examples/configs/all_config_parameters.py)** - Complete configuration guide
 
-## License
+### Decision Engines
+- **[`ai_based_decision_engine.py`](examples/decision_engines/ai_based_decision_engine.py)** - AI-powered decisions
+- **[`simple_decision_engine.py`](examples/decision_engines/simple_decision_engine.py)** - Time-based logic
+- **[`custom_decision_engine.py`](examples/decision_engines/custom_decision_engine.py)** - Build your own
 
-MIT License
+### Sleep Calculators
+- **[`ai_based_sleep_calculator.py`](examples/sleep_calculators/ai_based_sleep_calculator.py)** - Natural language patterns
+- **[`function_based_sleep_calculator.py`](examples/sleep_calculators/function_based_sleep_calculator.py)** - Adaptive timing
+- **[`pattern_based_sleep_calculator.py`](examples/sleep_calculators/pattern_based_sleep_calculator.py)** - Keyword matching
+
+### Monitoring & Callbacks
+- **[`comprehensive_callbacks.py`](examples/callbacks/comprehensive_callbacks.py)** - Full callback system
+
+**Run any example:**
+```bash
+python examples/ultra_simple_chat.py
+```
+## Advanced Features
+
+### Context Management
+```python
+# Set conversation context
+agent.set_context('user_mood', 'excited')
+agent.set_context('topic_urgency', 'high')
+
+# Context automatically influences decisions
+mood = agent.get_context('user_mood')
+```
+
+### Runtime Configuration
+```python
+# Update configuration while running
+agent.update_config({
+    'min_response_interval': 5,  # Respond faster
+    'engagement_threshold': 0.3   # Lower threshold
+})
+```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **Star this repo** if ProactiveAgent helps your project!
+
+<div align="center">
+
+**Made with ❤️ by the internet**
+
+Mainteiner: [Leonardo Mariga](https://github.com/leomariga) 
+
+</div>

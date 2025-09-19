@@ -1,9 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "proactiveagent"
 version = "0.1.0"
-description = "A Python library for creating proactive AI agents that actively engage users with configurable wake-up patterns and intelligent response decisions."
+description = "A Python framework to transform your AI from reactive to proactive with intelligent timing and context-aware wake-up patterns - Your agent decides when to speak!"
 readme = "README.md"
 requires-python = ">=3.12"
+license = {text = "BSD-3-Clause"}
+authors = [
+    {name = "Leonardo Mariga", email = "leomariga@gmail.com"},
+]
+maintainers = [
+    {name = "Leonardo Mariga", email = "leomariga@gmail.com"},
+]
+keywords = ["ai", "agent", "proactive", "active", "thread", "chatbot", "automation", "autonomous", "openai", "llm", "gpt", "conversational", "intelligent", "timing", "scheduling", "decision-making", "context-aware"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Communications :: Chat",
+    "Topic :: Communications :: Conferencing",
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+]
 dependencies = [
     "openai>=1.108.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/leomariga/ProactiveAgent"
+Repository = "https://github.com/leomariga/ProactiveAgent"
+Documentation = "https://github.com/leomariga/ProactiveAgent#readme"
+Issues = "https://github.com/leomariga/ProactiveAgent/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["proactiveagent"]

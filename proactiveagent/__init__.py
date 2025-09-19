@@ -6,7 +6,7 @@ with configurable wake-up patterns and intelligent response decisions.
 """
 
 __version__ = "0.1.0"
-__author__ = "Proactive AI Library"
+__author__ = "Leonardo Mariga"
 
 from .agent import ProactiveAgent
 from .providers.openai_provider import OpenAIProvider

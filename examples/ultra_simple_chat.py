@@ -33,10 +33,6 @@ def main():
         system_prompt="You are a casual young person which are bored and wants to talk in a WhatsApp chat. Use informal language, emojis, abbreviations, and speak like you're texting a friend. Keep responses short just a few words and conversational like real WhatsApp messages.",
         decision_config={
             'wake_up_pattern': "This is a normal whatsapp conversation, adapt your response frequency to the user's conversation.",
-            'min_response_interval': 15,
-            'max_response_interval': 3600,
-            'min_sleep_time': 10,
-            'max_sleep_time': 120,
         },
         #log_level="DEBUG"  # Enable debug logging to see what's happening
     )

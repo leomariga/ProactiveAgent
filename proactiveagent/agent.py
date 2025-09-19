@@ -45,20 +45,23 @@ class ProactiveAgent:
         self.provider = provider
         self.system_prompt = system_prompt or self._default_system_prompt()
         
-        # Use provided config or defaults for decision engine
-        self.decision_config = decision_config or {
-            'min_response_interval': 30,
+        # Use provided config merged with defaults for decision engine
+        default_decision_config = {
+            'min_response_interval': 15,
             'max_response_interval': 3600,
             'engagement_threshold': 0.5,
             'context_relevance_weight': 0.4,
             'time_weight': 0.3,
             'probability_weight': 0.3,
             'wake_up_pattern': "Check every 2-3 minutes if conversation is active",
-            'min_sleep_time': 30,  # 30 seconds minimum
-            'max_sleep_time': 600,  # 10 minutes in seconds
+            'min_sleep_time': 10,  # 10 seconds minimum
+            'max_sleep_time': 120,  # 2 minutes in seconds
             'engagement_high_threshold': 10,
             'engagement_medium_threshold': 3,
         }
+        
+        # Merge provided config with defaults, ensuring all keys exist
+        self.decision_config = {**default_decision_config, **(decision_config or {})}
 
         self.decision_engine = decision_engine or AIBasedDecisionEngine(provider)
         
