@@ -45,26 +45,21 @@ pip install proactiveagent
 from proactiveagent import ProactiveAgent, OpenAIProvider
 
 # Create a proactive agent
+# Define in natural language the frequency of response
 agent = ProactiveAgent(
     provider=OpenAIProvider(model="gpt-5-nano",),
     system_prompt="You are a casual bored teenager. Answer like you're texting a friend",
-
-    # Define in natural language the frequency of response
-    decision_config={
-        'wake_up_pattern': "Use the pace of a normal text chat",
-    }
+    decision_config={'wake_up_pattern': "Use the pace of a normal text chat",}
 )
 
-# Add response callback
+# Add response callback and start agent thread
 def on_response(response: str):
     print(f"🤖 AI: {response}")
 
 agent.add_callback(on_response)
-
-
-# Start the agent thread and chat
 agent.start()
 agent.send_message("Hey! whatsup?")
+
 # You can add a loop to keep sending the agent more messages! see our examples.
 ```
 
@@ -79,35 +74,31 @@ ProactiveAgent operates on a **3-step decision cycle**:
 
 ### 1. Decision Engine - "Should I Respond?"
 
-The **Decision Engine** analyzes multiple factors to determine if the AI should respond. Our default engine:
+The Decision Engine evaluates multiple factors to determine if the AI should respond:
 
-- **Context Analysis**: Evaluates questions, urgency keywords, and conversation flow
-- **Time Factors**: Considers elapsed time since the last user message
-- **AI Reasoning**: Leverages native AI decision-making capabilities
-- **Engagement Level**: Monitors user activity patterns and conversation intensity
+- **Context Analysis**: Checks for questions, urgency keywords, and conversation flow
+- **Timing**: Considers elapsed time since the last user message
+- **AI Reasoning**: Uses native AI capabilities for intelligent decision-making
+- **Engagement**: Monitors user activity patterns and conversation intensity
 
-We have other engines that you can choose TODO LINK. You can also define your own Engine like using our abstract class TODO LINK. (essa frase pode ficar com um design diferente no readme)
-**TODO: See Multi-Factor Scoring for more info**:
-
+> **💡 Customize Your Decision Engine**  
+> We have other engines you can choose from and you can also define your own engine using our abstract base class. See the [Decision Engines](#decision-engines) section for details and examples. 
 
 ### 2. Message Generation - "Respond"
 
-When the decision engine determines a response is appropriate, the agent:
-- Generates contextually appropriate responses
-- Considers conversation history and timing
-- Maintains natural conversation flow
-- Triggers all registered response callbacks
+Generates appropriate responses considering conversation history and timing.
 
 ### 3. Sleep Calculator - "How Long Should I Wait?"
 
-Finally, the **Sleep Calculator** determines optimal wait time before the next decision cycle. There are different Sleep Calculator available, for example:
+Determines the best wait time before the next decision cycle. Available options:
 
-- **AI-Based** (default): Uses AI to interpret natural language patterns like *"Respond in a frequency of a normal internet chat"* or *"You are a anxious person"*
-- **Pattern-Based**: Keyword matching for different conversation states
-- **Function-Based**: Define your own function for adaptive timing
-- **Static**: Fixed intervals for predictable behavior
+- **AI-Based** (default): Interprets natural language patterns like *"Respond like a normal chat"*
+- **Pattern-Based**: Keyword matching for different conversation states  
+- **Function-Based**: Custom timing functions
+- **Static**: Fixed intervals
 
-You can also create your own SleepCalculator TODO LINK
+> **💡 Customize Your Sleep Calculator**  
+> You can also create your own SleepCalculator. See the [Sleep Calculators](#sleep-calculators) section for details and examples.
 
 <!-- Flow diagram placeholder -->
 <!-- <div align="center">
@@ -258,12 +249,6 @@ This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICE
 
 ## Support
 
-- **Star this repo** if ProactiveAgent helps your project!
-
-<div align="center">
-
 **Made with ❤️ by the internet**
 
 Mainteiner: [Leonardo Mariga](https://github.com/leomariga) 
-
-</div>
