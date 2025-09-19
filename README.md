@@ -194,6 +194,10 @@ agent = ProactiveAgent(
 )
 ```
 
+## Development
+
+To run examples: `pip install -e .` then `python examples/ultra_simple_chat.py`
+
 ## License
 
 MIT License
