@@ -18,10 +18,10 @@
 
 ## What is ProactiveAgent?
 
-**ProactiveAgent** is an open-source Python library that wraps AI models with intelligent **proactive behavior**. Unlike traditional agents that only respond when prompted, ProactiveAgent creates AI agents can respond by their own. The agents are able to:
+**ProactiveAgent** is an open-source Python library that wraps AI models with intelligent **proactive behavior**. Unlike traditional agents that only respond when prompted, ProactiveAgent creates AI agents that can respond on their own. The agents are able to:
 
 - **Decide when to speak** - Multi-factor decision engine determines *if* and *when* to respond
-- **Sleep intelligently** - Dynamic timing system calculates smart response intervals  
+- **Sleep intelligently** - Dynamic timing system calculates the response intervals  
 - **Understand context** - Analyzes conversation flow, user engagement, and urgency
 - **Stay flexible** - Fully customizable decision engines and sleep calculators
 
