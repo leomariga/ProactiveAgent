@@ -18,7 +18,7 @@
 
 ## What is ProactiveAgent?
 
-**ProactiveAgent** is an open-source Python library that wraps AI models with intelligent **proactive behavior**. Unlike traditional agents that only respond when prompted, ProactiveAgent creates AI agents that:
+**ProactiveAgent** is an open-source Python library that wraps AI models with intelligent **proactive behavior**. Unlike traditional agents that only respond when prompted, ProactiveAgent creates AI agents can respond by their own. The agents are able to:
 
 - **Decide when to speak** - Multi-factor decision engine determines *if* and *when* to respond
 - **Sleep intelligently** - Dynamic timing system calculates smart response intervals  
@@ -45,9 +45,9 @@ from proactiveagent import ProactiveAgent, OpenAIProvider
 
 # Create a proactive agent: Define in natural language the frequency of response
 agent = ProactiveAgent(
-    provider=OpenAIProvider(model="gpt-5-nano",),
-    system_prompt="You are a casual bored teenager. Answer like you're texting a friend",
-    decision_config={'wake_up_pattern': "Use the pace of a normal text chat",}
+    provider = OpenAIProvider(model="gpt-5-nano",),
+    system_prompt = "You are a casual bored teenager. Answer like you're texting a friend",
+    decision_config = {'wake_up_pattern': "Use the pace of a normal text chat",}
 )
 
 # Add response callback and start agent thread
@@ -72,7 +72,7 @@ ProactiveAgent operates on a **3-step decision cycle**:
 
 ### 1. Decision Engine - "Should I Respond?"
 
-The Decision Engine evaluates multiple factors to determine if the AI should respond:
+Evaluates multiple factors to determine if the AI should respond:
 
 - **Context Analysis**: Checks for questions, urgency keywords, and conversation flow
 - **Timing**: Considers elapsed time since the last user message
@@ -108,15 +108,9 @@ Determines the best wait time before the next decision cycle. Available options:
 Choose or create your own decision-making logic:
 
 ```python
-from proactiveagent import AIBasedDecisionEngine, SimpleDecisionEngine
+from proactiveagent import DecisionEngine
 
-# Option 1 - AI-powered decisions (default)
-ai_engine = AIBasedDecisionEngine(provider)
-
-# Option 2 - Simple time-based decisions
-simple_engine = SimpleDecisionEngine()
-
-# Option 3 - Your custom logic
+# Your custom logic
 class MyDecisionEngine(DecisionEngine):
     async def should_respond(self, messages, last_time, context, config, triggered_by_user):
         # Your custom decision logic here
