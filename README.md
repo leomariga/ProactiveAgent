@@ -2,8 +2,7 @@
 
 <div align="center">
 
-<!-- Logo placeholder
-<img src="docs/logo.png" alt="ProactiveAgent Logo" width="200"/> -->
+<img src="docs/logo.png" alt="ProactiveAgent Logo" width="400"/>
 
 **Time-awareness for your AI Agent**
 
@@ -21,7 +20,7 @@
 
 **ProactiveAgent** is an open-source Python library that wraps AI models with intelligent **proactive behavior**. Unlike traditional agents that only respond when prompted, ProactiveAgent creates AI agents that:
 
-- **Think before speaking** - Multi-factor decision engine determines *if* and *when* to respond
+- **Decide when to speak** - Multi-factor decision engine determines *if* and *when* to respond
 - **Sleep intelligently** - Dynamic timing system calculates smart response intervals  
 - **Understand context** - Analyzes conversation flow, user engagement, and urgency
 - **Stay flexible** - Fully customizable decision engines and sleep calculators
@@ -44,8 +43,7 @@ pip install proactiveagent
 ```python
 from proactiveagent import ProactiveAgent, OpenAIProvider
 
-# Create a proactive agent
-# Define in natural language the frequency of response
+# Create a proactive agent: Define in natural language the frequency of response
 agent = ProactiveAgent(
     provider=OpenAIProvider(model="gpt-5-nano",),
     system_prompt="You are a casual bored teenager. Answer like you're texting a friend",
