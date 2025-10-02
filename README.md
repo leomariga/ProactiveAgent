@@ -25,12 +25,10 @@
 - **Understand context** - Analyzes conversation flow, user engagement, and urgency
 - **Stay flexible** - Fully customizable decision engines and sleep calculators
 
-<!-- Demo GIF placeholder -->
-<!-- <div align="center">
-<img src="docs/demo.gif" alt="ProactiveAgent Demo" width="600"/>
-</div> -->
-
-<video src="docs/example.mp4" controls></video>
+<div align="center">
+<video src="https://github.com/user-attachments/assets/b7e724e0-9590-4f73-bb78-478bf2fa3540" width="800" loop>
+</video>
+</div>
 
 ## Quick Start
 
