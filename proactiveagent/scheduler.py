@@ -69,9 +69,11 @@ class WakeUpScheduler:
                 self._call_sleep_time_callbacks(sleep_time, reasoning)
                 
                 # Sleep with interruption checking
-                await self._interruptible_sleep(sleep_time)
+                interrupted = await self._interruptible_sleep(sleep_time)
                 
-                if self.is_running:
+                # If sleep was interrupted (e.g., due to a user message),
+                # skip the immediate wake-up callback to avoid double evaluation.
+                if self.is_running and not interrupted:
                     # Wake up and call the callback
                     wake_up_context = context_provider()
                     wake_up_context['wake_up_time'] = time.time()
@@ -83,12 +85,15 @@ class WakeUpScheduler:
                 # Sleep for a short time before retrying
                 await asyncio.sleep(30)
     
-    async def _interruptible_sleep(self, seconds: int) -> None:
+    async def _interruptible_sleep(self, seconds: int) -> bool:
         """
         Sleep that can be interrupted by stopping the scheduler or sleep interruption
         
         Args:
             seconds: Number of seconds to sleep
+        
+        Returns:
+            bool: True if sleep was interrupted, False otherwise
         """
         sleep_interval = 1  # Check every second
         total_slept = 0
@@ -97,10 +102,14 @@ class WakeUpScheduler:
             await asyncio.sleep(min(sleep_interval, seconds - total_slept))
             total_slept += sleep_interval
         
-        # Reset interrupt flag after sleep is broken
+        # Reset interrupt flag after sleep is broken and report interruption status
+        was_interrupted = False
         if self._interrupt_sleep:
+            was_interrupted = True
             self._interrupt_sleep = False
             self.logger.info("[SCHEDULER] Sleep interrupted, recalculating immediately")
+        
+        return was_interrupted
     
     def stop(self) -> None:
         """Stop the wake-up scheduler"""

@@ -30,6 +30,13 @@
 <img src="docs/demo.gif" alt="ProactiveAgent Demo" width="600"/>
 </div> -->
 
+<div align="center">
+<video controls muted playsinline loop>
+  <source src="docs/example.mp4" type="video/mp4"/>
+  Your browser does not support the video tag.
+</video>
+</div>
+
 ## Quick Start
 
 ### Installation
