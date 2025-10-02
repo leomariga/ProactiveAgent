@@ -31,10 +31,7 @@
 </div> -->
 
 <div align="center">
-<video controls muted playsinline loop>
-  <source src="docs/example.mp4" type="video/mp4"/>
-  Your browser does not support the video tag.
-</video>
+<video src="docs/example.mp4" controls></video>
 </div>
 
 ## Quick Start
