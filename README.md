@@ -30,9 +30,7 @@
 <img src="docs/demo.gif" alt="ProactiveAgent Demo" width="600"/>
 </div> -->
 
-<div align="center">
 <video src="docs/example.mp4" controls></video>
-</div>
 
 ## Quick Start
 
