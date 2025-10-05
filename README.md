@@ -26,8 +26,7 @@
 - **Stay flexible** - Fully customizable decision engines and sleep calculators
 
 <div align="center">
-<video src="https://github.com/user-attachments/assets/b7e724e0-9590-4f73-bb78-478bf2fa3540" width="800" loop>
-</video>
+<img src="docs/flow_gif.gif"/>
 </div>
 
 ## Quick Start
@@ -47,7 +46,9 @@ from proactiveagent import ProactiveAgent, OpenAIProvider
 agent = ProactiveAgent(
     provider = OpenAIProvider(model="gpt-5-nano",),
     system_prompt = "You are a casual bored teenager. Answer like you're texting a friend",
-    decision_config = {'wake_up_pattern': "Use the pace of a normal text chat",}
+    decision_config = {
+        'wake_up_pattern': "Use the pace of a normal text chat",
+    }
 )
 
 # Add response callback and start agent thread
@@ -60,6 +61,11 @@ agent.send_message("Hey! whatsup?")
 
 # You can add a loop to keep sending the agent more messages! see our examples.
 ```
+
+<div align="center">
+<video src="https://github.com/user-attachments/assets/b7e724e0-9590-4f73-bb78-478bf2fa3540" width="800" loop>
+</video>
+</div>
 
 ## How It Works
 
