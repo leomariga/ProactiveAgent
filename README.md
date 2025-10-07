@@ -40,6 +40,7 @@ pip install proactiveagent
 ### Basic Usage
 
 ```python
+import time
 from proactiveagent import ProactiveAgent, OpenAIProvider
 
 # Create a proactive agent: Define in natural language the frequency of response
@@ -52,14 +53,18 @@ agent = ProactiveAgent(
 )
 
 # Add response callback and start agent thread
-def on_response(response: str):
+def on_response(response: str): 
     print(f"🤖 AI: {response}")
 
 agent.add_callback(on_response)
 agent.start()
-agent.send_message("Hey! whatsup?")
+while True:
+    message = input("You: ").strip()
+    if message.lower() == 'quit': break
+    agent.send_message(message)
+    time.sleep(3)
 
-# You can add a loop to keep sending the agent more messages! see our examples.
+agent.stop()
 ```
 
 <div align="center">
@@ -198,8 +203,8 @@ agent = ProactiveAgent(
 Explore our examples in the [`examples/`](examples/) directory:
 
 ### Getting Started
-- **[`ultra_simple_chat.py`](examples/ultra_simple_chat.py)** - Minimal WhatsApp-style chat
-- **[`all_config_parameters.py`](examples/configs/all_config_parameters.py)** - Complete configuration guide
+- **[`minimal_chat.py`](examples/minimal_chat.py)** - Ultra-simple chat
+- **[`minimal_callbacks.py`](examples/callbacks/minimal_callbacks.py)** - Minimal chat with thought process
 
 ### Decision Engines
 - **[`ai_based_decision_engine.py`](examples/decision_engines/ai_based_decision_engine.py)** - AI-powered decisions
@@ -212,8 +217,10 @@ Explore our examples in the [`examples/`](examples/) directory:
 - **[`pattern_based_sleep_calculator.py`](examples/sleep_calculators/pattern_based_sleep_calculator.py)** - Keyword matching
 
 ### Monitoring & Callbacks
-- **[`comprehensive_callbacks.py`](examples/callbacks/comprehensive_callbacks.py)** - Full callback system
+- **[`minimal_callbacks.py`](examples/callbacks/minimal_callbacks.py)** - Full callback system
 
+### Configuration
+- **[`all_config_parameters.py`](examples/configs/all_config_parameters.py)** - Complete configuration guide
 ## Advanced Features
 
 ### Context Management

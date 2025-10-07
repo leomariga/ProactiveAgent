@@ -83,25 +83,20 @@ def main():
     print("Watch the callbacks to see how each parameter affects behavior.")
     print("Type 'quit' to exit.\n")
     
-    try:
-        # Main interaction loop
-        while True:
-            message = input("You: ").strip()
-            if message.lower() == 'quit':
-                break
-            
-            # Send message to agent - triggers decision-making process
-            agent.send_message(message)
-            
-            # Brief pause to prevent overwhelming the system
-            time.sleep(1)
-            
-    except KeyboardInterrupt:
-        # Handle Ctrl+C gracefully
-        pass
-    finally:
-        # Always stop the agent to clean up resources
-        agent.stop()
+    # Main interaction loop
+    while True:
+        message = input("You: ").strip()
+        if message.lower() == 'quit':
+            break
+
+        # Send message to agent - triggers decision-making process
+        agent.send_message(message)
+
+        # Brief pause to prevent overwhelming the system
+        time.sleep(1)
+
+    # Always stop the agent to clean up resources
+    agent.stop()
 
 
 if __name__ == "__main__":

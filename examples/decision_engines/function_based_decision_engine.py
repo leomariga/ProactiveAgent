@@ -61,17 +61,13 @@ def main():
     print("Uses custom function to decide when to respond.")
     print("Type 'quit' to exit.\n")
     
-    try:
-        while True:
-            message = input("You: ").strip()
-            if message.lower() == 'quit':
-                break
-            agent.send_message(message)
-            time.sleep(1)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        agent.stop()
+    while True:
+        message = input("You: ").strip()
+        if message.lower() == 'quit': break
+        agent.send_message(message)
+        time.sleep(1)
+
+    agent.stop()
 
 
 if __name__ == "__main__":
