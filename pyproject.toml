@@ -38,7 +38,7 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/leomariga/ProactiveAgent"
 Repository = "https://github.com/leomariga/ProactiveAgent"
-Documentation = "https://github.com/leomariga/ProactiveAgent#readme"
+Documentation = "https://leomariga.github.io/ProactiveAgent/"
 Issues = "https://github.com/leomariga/ProactiveAgent/issues"
 
 [tool.hatch.build.targets.wheel]
