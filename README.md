@@ -1,8 +1,11 @@
-# ProactiveAgent
-
 <div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo_b.png" width="400">
+  <source media="(prefers-color-scheme: light)" srcset="docs/logo.png" width="400">
+  <img alt="ProactiveAgent logo." src="docs/logo.png" width="400">
+</picture>
 
-<img src="docs/logo.png" alt="ProactiveAgent Logo" width="400"/>
+<!-- <img src="docs/logo.png" alt="ProactiveAgent Logo" width="400"/> -->
 
 **Time-awareness for your AI Agent**
 
@@ -244,7 +247,15 @@ agent.update_config({
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
+
+**Quick setup:**
+```bash
+pip install uv
+uv sync --dev  # Install dependencies including dev tools
+```
+
+Please see our [Contributing Guide](CONTRIBUTING.md) for detailed instructions.
 
 ## License
 

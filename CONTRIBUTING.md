@@ -8,6 +8,66 @@ We love your input! We want to make contributing as easy and transparent as poss
 - Proposing new features
 - Becoming a maintainer
 
+## Development Setup
+
+This project uses [uv](https://docs.astral.sh/uv/) for fast, reliable dependency management.
+
+### Prerequisites
+
+Install uv if you haven't already:
+
+```bash
+pip install uv
+```
+
+Or follow the [official installation guide](https://docs.astral.sh/uv/getting-started/installation/).
+
+### Setting Up Your Development Environment
+
+1. **Fork and clone the repository:**
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ProactiveAgent.git
+cd ProactiveAgent
+```
+
+2. **Install dependencies:**
+
+```bash
+# Install all dependencies including dev tools
+uv sync --dev
+```
+
+This will:
+- Create a virtual environment automatically
+- Install all project dependencies from `uv.lock`
+- Install development dependencies (linters, formatters, testing tools)
+
+3. **Run examples or tests:**
+
+```bash
+# Run any script using uv
+uv run python examples/minimal_chat.py
+
+# Or activate the virtual environment
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+python examples/minimal_chat.py
+```
+
+### Development Dependencies
+
+The `--dev` flag installs additional tools for development:
+- Code formatters and linters
+- Testing frameworks
+- Documentation generators
+- Any other development utilities
+
+To see all installed dependencies:
+
+```bash
+uv pip list
+```
+
 ## We develop with GitHub
 We use GitHub to host code, track issues and feature requests, and accept pull requests.
 

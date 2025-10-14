@@ -1,0 +1,230 @@
+# Project information
+site_name: ProactiveAgent
+site_url: https://leomariga.github.io/ProactiveAgent/
+site_description: "Python framework for building time-aware AI agents that proactively initiate conversations and maintain engagement autonomously"
+site_author: Leonardo Mariga
+
+# Repository
+repo_url: https://github.com/leomariga/ProactiveAgent
+repo_name: leomariga/ProactiveAgent
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2025 Leonardo Mariga
+
+# Configuration
+use_directory_urls: true
+strict: false
+
+# Theme configuration - Material Design with orange theme
+theme:
+  name: material
+  language: en
+
+  # Color scheme - Orange primary with dark mode support
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: red
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: red
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  # Logo and favicon
+  logo: logo_b.png
+  favicon: logo_b.png
+
+  # Navigation features
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+
+  # Custom icons
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+# Extra configuration
+extra:
+  generator: false  # Remove default MkDocs generator
+
+  # Social media and links
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/leomariga/ProactiveAgent
+      name: ProactiveAgent on GitHub
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/proactiveagent/
+      name: ProactiveAgent on PyPI
+    - icon: fontawesome/solid/book
+      link: https://leomariga.github.io/ProactiveAgent/
+      name: Documentation
+
+  # Version selector (optional - uncomment when you have versions)
+  # version:
+  #   provider: mike
+  #   default: latest
+
+  # Analytics (uncomment and add your tracking ID)
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
+  #   feedback:
+  #     title: Was this page helpful?
+  #     ratings:
+  #       - icon: material/thumb-up-outline
+  #         name: This page was helpful
+  #         data: 1
+  #         note: Thanks for your feedback!
+  #       - icon: material/thumb-down-outline
+  #         name: This page could be improved
+  #         data: 0
+  #         note: Thanks for your feedback!
+
+# SEO and Open Graph tags
+extra_css:
+  - stylesheets/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang:
+        - en
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            docstring_section_style: table
+            heading_level: 2
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_source: true
+            show_signature: true
+            show_signature_annotations: true
+            separate_signature: true
+            merge_init_into_class: true
+            show_submodules: true
+            inherited_members: true
+            members_order: source
+            show_if_no_docstring: false
+            show_bases: true
+            show_symbol_type_heading: true
+            signature_crossrefs: true
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Examples: examples.md
+  - API Reference:
+    - Overview: api-reference.md
+    - ProactiveAgent: api/agent.md
+    - Providers: api/providers.md
+    - Decision Engines: api/decision-engines.md
+    - Sleep Calculators: api/sleep-calculators.md
+    - Scheduler: api/scheduler.md
+
+# Markdown extensions for enhanced formatting and SEO
+markdown_extensions:
+  # Basic extensions
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - tables
+  
+  # Table of contents
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+      toc_depth: 3
+  
+  # PyMdown Extensions for better code and content
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      auto_title: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: leomariga
+      repo: ProactiveAgent
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+      base_path: [docs]
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: false

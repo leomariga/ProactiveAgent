@@ -49,3 +49,10 @@ name = "testpypi"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
+
+[dependency-groups]
+dev = [
+    "mkdocs-material>=9.6.21",
+    "mkdocstrings[python]>=0.30.1",
+    "pymdown-extensions>=10.0",
+]
