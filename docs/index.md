@@ -8,6 +8,9 @@ keywords: proactive, active, proactive AI agents, time-aware AI, AI scheduling f
 <figure markdown="span">
 ![Logo](logo_b.png#only-dark){ width="400" }
 </figure>
+<figure markdown="span">
+![Logo](logo.png#only-light){ width="400" }
+</figure>
 ---
 
 ## What is ProactiveAgent?
