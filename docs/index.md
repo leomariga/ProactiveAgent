@@ -8,8 +8,9 @@ keywords: proactive, active, proactive AI agents, time-aware AI, AI scheduling f
 
 <div align="center">
 <picture>
-  <source srcset="logo_b.png" media="(prefers-color-scheme: dark)">
-  <img src="logo.png" alt="ProactiveAgent Logo" width="400"/>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo_b.png" width="400">
+  <source media="(prefers-color-scheme: light)" srcset="docs/logo.png" width="400">
+  <img alt="ProactiveAgent logo." src="docs/logo.png" width="400">
 </picture>
 </div>
 
