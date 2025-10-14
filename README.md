@@ -1,8 +1,8 @@
 <div align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/logo_b.png" width="400">
-  <source media="(prefers-color-scheme: light)" srcset="docs/logo.png" width="400">
-  <img alt="ProactiveAgent logo." src="docs/logo.png" width="400">
+  <source media="(prefers-color-scheme: dark)" srcset="logo_b.png" width="400">
+  <source media="(prefers-color-scheme: light)" srcset="logo.png" width="400">
+  <img alt="ProactiveAgent logo." src="logo.png" width="400">
 </picture>
 
 <!-- <img src="docs/logo.png" alt="ProactiveAgent Logo" width="400"/> -->
@@ -15,7 +15,7 @@
 
 *Transform your AI from reactive to proactive with intelligent timing and context-aware wake-up patterns*
 
-[Quick Start](#quick-start) • [Documentation](#documentation) • [Examples](#examples) • [Architecture](#architecture)
+[Quick Start](#quick-start) • [Documentation](https://leomariga.github.io/ProactiveAgent/) • [Examples](#examples)
 
 </div>
 
