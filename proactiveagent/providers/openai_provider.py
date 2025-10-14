@@ -24,7 +24,7 @@ class ResponseDecision(BaseModel):
 class OpenAIProvider(BaseProvider):
     """OpenAI provider for Active AI agents"""
     
-    def __init__(self, model: str = "gpt-3.5-turbo", **kwargs):
+    def __init__(self, model: str = "gpt-3.5-turbo", **kwargs: Any):
         """
         Initialize OpenAI provider
         
@@ -42,7 +42,7 @@ class OpenAIProvider(BaseProvider):
         messages: List[Dict[str, str]], 
         system_prompt: Optional[str] = None,
         triggered_by_user_message: bool = False,
-        **kwargs
+        **kwargs: Any
     ) -> str:
         """Generate response using OpenAI API"""
         def _sync_generate():
@@ -84,7 +84,7 @@ class OpenAIProvider(BaseProvider):
         messages: List[Dict[str, str]],
         elapsed_time: int,
         context: Dict[str, Any],
-        **kwargs
+        **kwargs: Any
     ) -> bool:
         """
         Determine if AI should respond using OpenAI decision-making with structured output
@@ -155,7 +155,7 @@ class OpenAIProvider(BaseProvider):
         min_sleep_time: int,
         max_sleep_time: int,
         context: Dict[str, Any],
-        **kwargs
+        **kwargs: Any
     ) -> tuple[int, str]:
         """
         Calculate sleep time using OpenAI pattern interpretation with structured output

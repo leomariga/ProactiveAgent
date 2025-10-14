@@ -7,7 +7,7 @@ from typing import List, Dict, Any, Optional
 class BaseProvider(ABC):
     """Abstract base class for AI providers"""
     
-    def __init__(self, model: str, **kwargs):
+    def __init__(self, model: str, **kwargs: Any):
         """
         Initialize provider
         
@@ -24,7 +24,7 @@ class BaseProvider(ABC):
         messages: List[Dict[str, str]], 
         system_prompt: Optional[str] = None,
         triggered_by_user_message: bool = False,
-        **kwargs
+        **kwargs: Any
     ) -> str:
         """
         Generate a response from the AI
