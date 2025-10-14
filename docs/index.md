@@ -7,11 +7,10 @@ keywords: proactive, active, proactive AI agents, time-aware AI, AI scheduling f
 # ProactiveAgent Documentation
 
 <div align="center">
-
-<img src="logo.png" alt="ProactiveAgent Logo" width="400"/>
-
-
-
+<picture>
+  <source srcset="logo_b.png" media="(prefers-color-scheme: dark)">
+  <img src="logo.png" alt="ProactiveAgent Logo" width="400"/>
+</picture>
 </div>
 
 ---
