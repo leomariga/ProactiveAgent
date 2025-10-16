@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "proactiveagent"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Python framework to transform your AI from reactive to proactive with intelligent timing and context-aware wake-up patterns - Your agent decides when to speak!"
 readme = "README.md"
 requires-python = ">=3.12"

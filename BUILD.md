@@ -16,13 +16,13 @@ Update the version of your library in `pyproject.toml`:
 
 ```bash
 # Patch version (0.1.0 → 0.1.1) - for bug fixes
-uv version patch
+uv version --bump patch
 
 # Minor version (0.1.0 → 0.2.0) - for new features
-uv version minor
+uv version --bump minor
 
 # Major version (0.1.0 → 1.0.0) - for breaking changes
-uv version major
+uv version --bump major
 
 # Set specific version
 uv version 0.2.0
@@ -54,15 +54,9 @@ twine check dist/*
 
 ## Publishing Process
 
-### 1. Test on TestPyPI (Recommended)
 
-First, test your package on TestPyPI:
 
-```bash
-uv publish --index testpypi
-```
-
-### 2. Test Installation from TestPyPI
+### Publish to Main PyPI
 
 Verify your package works correctly:
 
@@ -88,7 +82,7 @@ Here's the recommended complete workflow:
 
 ```bash
 # 1. Update version
-uv version minor
+uv version --bump minor
 
 # 2. Build package
 uv build
